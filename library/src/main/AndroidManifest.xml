@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <meta-data android:name="io.sentry.dsn" android:value="" />
+
+        <!--        <meta-data android:name="io.sentry.dsn" android:value="https://b50d9bee97814c769500ea0d9eb7aaf4@o4503903413665792.ingest.sentry.io/4503903414779904" />-->
+<!--        &lt;!&ndash; Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.-->
+<!--           We recommend adjusting this value in production. &ndash;&gt;-->
+<!--        <meta-data android:name="io.sentry.traces.sample-rate" android:value="1.0" />-->
+<!--        &lt;!&ndash; Enable user interaction tracing to capture transactions for various UI events (such as clicks or scrolls). &ndash;&gt;-->
+<!--        <meta-data android:name="io.sentry.traces.user-interaction.enable" android:value="true" />-->
+
+        <activity
+            android:name=".InterceptorActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <service
+            android:name=".NotificationListenerExampleService"
+            android:exported="false"
+            android:label="NotificationListener"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".YespoPushBroadcastReceiver" />
+    </application>
 
 </manifest>

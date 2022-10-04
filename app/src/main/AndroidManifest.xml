@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission
+        android:name="android.permission.GET_ACCOUNTS" />
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,6 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SampleLibrary"
         tools:targetApi="31">
+
+        <meta-data tools:node="replace" android:name="io.sentry.dsn" android:value="https://207223369c3f4a7ba8ac1db87f1897b9@o4503903413665792.ingest.sentry.io/4503903438503936" />
+        <!-- Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+           We recommend adjusting this value in production. -->
+        <meta-data android:name="io.sentry.traces.sample-rate" android:value="1.0" />
+        <!-- Enable user interaction tracing to capture transactions for various UI events (such as clicks or scrolls). -->
+        <meta-data android:name="io.sentry.traces.user-interaction.enable" android:value="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
